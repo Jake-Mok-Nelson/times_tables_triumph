@@ -8,7 +8,7 @@ void main() {
       final fact = MultiplicationFact(3, 7);
 
       // Act & Assert: product should be 21
-      expect(fact.product, equals(21), reason: '3 × 7 should be 21');
+      expect(fact.product, equals(21), reason: '3 x 7 should be 21');
     });
 
     test('product handles larger numbers', () {
@@ -16,14 +16,14 @@ void main() {
       final fact = MultiplicationFact(12, 12);
 
       // Act & Assert: product should be 144
-      expect(fact.product, equals(144), reason: '12 × 12 should be 144');
+      expect(fact.product, equals(144), reason: '12 x 12 should be 144');
     });
   });
 
   group('FactGenerator', () {
     final generator = FactGenerator();
 
-    test('generate() default maxTable produces operands 1–12', () {
+    test('generate() default maxTable produces operands 1-12', () {
       // Sample multiple times to ensure range
       for (var i = 0; i < 100; i++) {
         final fact = generator.generate();

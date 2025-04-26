@@ -3,9 +3,9 @@ import 'package:times_tables_triumph/fact.dart';
 
 /// A flashcard that shows a multiplication question and flips to reveal the answer.
 class FlashCardWidget extends StatefulWidget {
-  final MultiplicationFact fact;
+  final FactGenerator generator;
 
-  const FlashCardWidget({super.key, required this.fact});
+  const FlashCardWidget({super.key, required this.generator});
 
   @override
   FlashCardWidgetState createState() => FlashCardWidgetState();
@@ -13,22 +13,29 @@ class FlashCardWidget extends StatefulWidget {
 
 class FlashCardWidgetState extends State<FlashCardWidget> {
   bool _showAnswer = false;
+  late MultiplicationFact fact = widget.generator.generate(maxTable: 12);
 
   @override
   Widget build(BuildContext context) {
-    final displayText = _showAnswer
-        // Back of card: show full fact with answer
-        ? '${widget.fact.multiplicand} × ${widget.fact.multiplier} = ${widget.fact.product}'
-        // Front of card: show question only
-        : '${widget.fact.multiplicand} × ${widget.fact.multiplier} = ?';
+    final displayText =
+        _showAnswer
+            // Back of card: show full fact with answer
+            ? '${fact.multiplicand} x ${fact.multiplier} = ${fact.product}'
+            // Front of card: show question only
+            : '${fact.multiplicand} x ${fact.multiplier} = ?';
 
     return GestureDetector(
-      onTap: () => setState(() => _showAnswer = !_showAnswer),
+      onTap:
+          () => setState(() {
+            if (_showAnswer) {
+              _setNewFact();
+            } else {
+              _showAnswer = true;
+            }
+          }),
       child: Card(
         color: Theme.of(context).cardTheme.color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 4,
         margin: const EdgeInsets.all(16),
         child: Container(
@@ -36,11 +43,20 @@ class FlashCardWidgetState extends State<FlashCardWidget> {
           alignment: Alignment.center,
           child: Text(
             displayText,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge!.copyWith(fontSize: 32),
             textAlign: TextAlign.center,
           ),
         ),
       ),
     );
+  }
+
+  _setNewFact() {
+    setState(() {
+      fact = widget.generator.generate(maxTable: 12);
+      _showAnswer = false;
+    });
   }
 }
