@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 /// A class that represents a multiplication problem.
 class MultiplicationFact {
   final int multiplicand;
