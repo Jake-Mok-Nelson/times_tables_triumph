@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:times_tables_triumph/fact.dart';
-import 'package:times_tables_triumph/flashcard.dart';
+import 'package:times_tables_triumph/flash_card.dart';
 
 void main() {
   runApp(const MyApp());
