@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:times_tables_triumph/screens/practice.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -6,7 +7,6 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Times Tables Triumph')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -40,14 +40,22 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: null, // placeholder, disabled
-                    child: Text('Quick Quiz'),
+                    child: Text('Quiz'),
                   ),
                 ),
                 SizedBox(width: 16),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: null, // placeholder, disabled
-                    child: Text('Practice Mode'),
+                    // Navigate to practice screen
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PracticeScreen(),
+                        ),
+                      );
+                    },
+                    child: Text('Practice'),
                   ),
                 ),
               ],

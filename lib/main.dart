@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:times_tables_triumph/fact.dart';
-import 'package:times_tables_triumph/flash_card.dart';
+import 'package:times_tables_triumph/screens/dashboard.dart';
+import 'package:times_tables_triumph/screens/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,8 +42,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static final List<Widget> _screens = [
-    Center(child: FlashCardWidget(generator: FactGenerator())),
-    Center(child: Text('Settings Screen')),
+    Center(child: DashboardScreen()),
+    Center(child: SettingsScreen()),
   ];
 
   void _onItemTapped(int index) {
