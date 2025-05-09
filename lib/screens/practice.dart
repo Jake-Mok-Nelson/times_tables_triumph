@@ -77,7 +77,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
               },
             ),
             SizedBox(height: 16),
-              
+
             Text(
               'Max Multiplicand:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
